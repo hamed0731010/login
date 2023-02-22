@@ -1,0 +1,10 @@
+<h1>login</h1>
+<form  action="/login" method="post" >
+    {% csrf_token %}
+    <input name="phone" placeholder="number"  type="number">
+    <br>
+    <input name="pass" placeholder="pass" type="password">
+    <br>
+<button  type="submit"> ثبت</button>
+
+</form>
