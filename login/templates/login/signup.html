@@ -1,9 +1,11 @@
 <h1>sign up</h1>
 <form action="/signup"  method="post">
     {% csrf_token %}
-<input name="name"  type="text">
+
+    {{form|safe}}
+<!-- <input name="name"  type="text">
 <input name="phone"  type="number">
 <input name="pass"  type="password">
-<input name="reppass"  type="password">
+<input name="reppass"  type="password"> -->
 <button  type="submit"> ثبت</button>
 </form>

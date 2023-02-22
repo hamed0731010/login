@@ -58,7 +58,7 @@ ROOT_URLCONF = 'achare.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -126,6 +126,6 @@ STATIC_URL = 'static/'
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 TEMPLATE_DIRS = (
-    os.path.join(SETTINGS_PATH, 'templates'),
-)
+     os.path.join(SETTINGS_PATH, 'templates'),
+ )
 BLOCKED_IPS=[]

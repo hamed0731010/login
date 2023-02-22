@@ -15,21 +15,37 @@ from django.db.models import Q
 from django.core.exceptions import ValidationError
 from django.db.transaction import TransactionManagementError
 from django.views.decorators.http import condition
-
+from .forms import UserForm
 import time
+from django.contrib.auth.hashers import make_password
 #signup
+
 def signup(request):
-     if request.method=="POST":
-        phone=request.POST.get("phone")
-        password=request.POST.get("pass")
-     
-        if password !=None and phone !=None:
-                try:
-                        user=User.objects.create(number=phone,password=password)
+        userform=UserForm()
+        if request.method=="POST":
+                userform=UserForm(request.POST)
+                if userform.is_valid():
+                        userform.save(commit=False)
+                        userform.password=make_password(userform.cleaned_data['password'])
+                        userform.save()
                         return redirect("/login")
-                except:
-                      messages.error("phone number is invalid or Repetitious") 
-     return render(request,"login/signup.html")        
+                else:
+                        userform=UserForm()    
+        context={'form' :userform}
+        return render(request,'login/signup.html',context)                    
+# def sign(request):
+     
+     
+#         phone=request.POST.get("phone")
+#         password=request.POST.get("pass")
+     
+#         if password !=None and phone !=None:
+#                 try:
+#                         user=User.objects.create(number=phone,password=password)
+#                         return redirect("/login")
+#                 except:
+#                       TransactionManagementError("incorrrect") 
+#         return render(request,"login/signup.html")        
 #for checking the user login     
 def login(request):
 
