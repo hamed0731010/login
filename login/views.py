@@ -1,17 +1,12 @@
 from random import random
 from django.shortcuts import render
-from rest_framework.generics import ListAPIView,ListCreateAPIView,CreateAPIView
-from rest_framework.views import APIView
 from .models import User,Log
 from django.shortcuts import redirect ,HttpResponse
-from .serializer import UserSerializer
-import socket
 import datetime
 from django.contrib import messages
 import random
 from ippanel import Client
 from django.db.models import Q
-# you api key that generated from panel
 from django.core.exceptions import ValidationError
 from django.db.transaction import TransactionManagementError
 from django.views.decorators.http import condition
