@@ -79,7 +79,7 @@ def otp(request):
                now=request.session['time']       
         finally:
                 t=time.time()          
-                if (request.method=="POST" and  now==0) or (request.method=="POST" and t>now+600):
+                if (request.method=="POST" and  now==0) or (request.method=="POST" and t>now+60):
                         
                         
                         api_key = "Fs2SgWGY9SmClVJUBlOiCxyjAD7LCLsQBlnl-oSyp4U="
@@ -107,7 +107,7 @@ def otp(request):
                                 else:
                                         ValidationError("incorrect")
 
-                elif (request.method=="POST" and t<now+600):
+                elif (request.method=="POST" and t<now+60):
                         return render(request,"login/otp.html")                              
 
 
